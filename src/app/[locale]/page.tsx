@@ -44,15 +44,37 @@ export default function Home() {
 
   // AdSense 광고 로드
   useEffect(() => {
-    if (bmi !== null && window.adsbygoogle && !adsLoaded) {
+    // Display ad only if BMI is calculated and ad not already loaded
+    if (bmi !== null && !adsLoaded) {
       try {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-        setAdsLoaded(true);
+        if (window.adsbygoogle && window.adsbygoogle.push) {
+          window.adsbygoogle.push({});
+          setAdsLoaded(true);
+          console.log("AdSense ad pushed successfully");
+        } else {
+          console.warn("AdSense not available yet");
+          // Try again after a short delay
+          const timer = setTimeout(() => {
+            if (window.adsbygoogle && window.adsbygoogle.push) {
+              window.adsbygoogle.push({});
+              setAdsLoaded(true);
+              console.log("AdSense ad pushed on retry");
+            }
+          }, 2000);
+          return () => clearTimeout(timer);
+        }
       } catch (error) {
         console.error("AdSense error:", error);
       }
     }
   }, [bmi, adsLoaded]);
+
+  // Reset ad status when calculator is reset
+  useEffect(() => {
+    if (bmi === null) {
+      setAdsLoaded(false);
+    }
+  }, [bmi]);
 
   const safeT = (key: string, fallback: string): string => {
     try {
@@ -371,7 +393,7 @@ export default function Home() {
                   className="adsbygoogle"
                   style={{ display: "block" }}
                   data-ad-client="ca-pub-9196149361612087"
-                  data-ad-slot="your-ad-slot-id"
+                  data-ad-slot="9277294823"
                   data-ad-format="auto"
                   data-full-width-responsive="true"
                 ></ins>

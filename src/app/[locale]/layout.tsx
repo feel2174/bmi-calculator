@@ -23,57 +23,130 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-export const metadata: Metadata = {
-  title: "BMI 계산기 | 무료 체질량지수 계산",
-  description:
-    "무료 온라인 BMI 계산기로 당신의 체질량지수를 계산해보세요. 키와 몸무게를 입력하면 바로 BMI 수치와 비만도를 확인할 수 있습니다.",
-  keywords: "BMI, 체질량지수, 비만도, 체중계산, 건강, 다이어트, 무료계산기",
-  icons: {
-    icon: [
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon.ico" },
-    ],
-    apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
-    ],
-    other: [
-      {
-        url: "/android-chrome-192x192.png",
-        sizes: "192x192",
-        type: "image/png",
+// Dynamically generate metadata based on locale
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  // params는 Promise이므로 await으로 처리
+  const resolvedParams = await params;
+
+  // Fallback to 'ko' if the provided locale is not valid
+  const resolvedLocale =
+    resolvedParams?.locale && locales.includes(resolvedParams.locale)
+      ? resolvedParams.locale
+      : "ko";
+
+  // For Korean (default)
+  if (resolvedLocale === "ko") {
+    return {
+      title: "BMI 계산기 | 무료 체질량지수 계산",
+      description:
+        "무료 온라인 BMI 계산기로 당신의 체질량지수를 계산해보세요. 키와 몸무게를 입력하면 바로 BMI 수치와 비만도를 확인할 수 있습니다.",
+      keywords: "BMI, 체질량지수, 비만도, 체중계산, 건강, 다이어트, 무료계산기",
+      openGraph: {
+        type: "website",
+        locale: "ko_KR",
+        url: "https://bmi.zucca100.com",
+        title: "BMI 계산기 | 무료 체질량지수 계산",
+        description:
+          "무료 온라인 BMI 계산기로 당신의 체질량지수를 계산해보세요. 키와 몸무게를 입력하면 바로 BMI 수치와 비만도를 확인할 수 있습니다.",
+        siteName: "BMI 계산기",
+        images: [
+          {
+            url: "https://bmi.zucca100.com/android-chrome-512x512.png",
+            width: 1200,
+            height: 630,
+            alt: "BMI 계산기 로고 이미지",
+          },
+        ],
       },
-      {
-        url: "/android-chrome-512x512.png",
-        sizes: "512x512",
-        type: "image/png",
+      twitter: {
+        card: "summary_large_image",
+        title: "BMI 계산기 | 무료 체질량지수 계산",
+        description:
+          "무료 온라인 BMI 계산기로 당신의 체질량지수를 계산해보세요.",
+        images: ["https://bmi.zucca100.com/android-chrome-512x512.png"],
       },
-    ],
-  },
-  openGraph: {
-    type: "website",
-    locale: "ko_KR",
-    url: "https://bmi.zucca100.com",
-    title: "BMI 계산기 | 무료 체질량지수 계산",
+    };
+  }
+  // For English
+  else if (resolvedLocale === "en") {
+    return {
+      title: "BMI Calculator | Free Body Mass Index Calculator",
+      description:
+        "Calculate your Body Mass Index with our free online BMI calculator. Enter your height and weight to instantly check your BMI and weight status.",
+      keywords:
+        "BMI, Body Mass Index, weight status, weight calculation, health, diet, free calculator",
+      openGraph: {
+        type: "website",
+        locale: "en_US",
+        url: "https://bmi.zucca100.com",
+        title: "BMI Calculator | Free Body Mass Index Calculator",
+        description:
+          "Calculate your Body Mass Index with our free online BMI calculator. Enter your height and weight to instantly check your BMI and weight status.",
+        siteName: "BMI Calculator",
+        images: [
+          {
+            url: "https://bmi.zucca100.com/android-chrome-512x512.png",
+            width: 1200,
+            height: 630,
+            alt: "BMI Calculator Logo Image",
+          },
+        ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: "BMI Calculator | Free Body Mass Index Calculator",
+        description:
+          "Calculate your Body Mass Index with our free online BMI calculator.",
+        images: ["https://bmi.zucca100.com/android-chrome-512x512.png"],
+      },
+    };
+  }
+  // For Japanese
+  else if (resolvedLocale === "ja") {
+    return {
+      title: "BMI計算機 | 無料ボディマス指数計算",
+      description:
+        "無料オンラインBMI計算機であなたのボディマス指数を計算しましょう。身長と体重を入力すれば、すぐにBMI値と体型判定が確認できます。",
+      keywords:
+        "BMI, ボディマス指数, 体型判定, 体重計算, 健康, ダイエット, 無料計算機",
+      openGraph: {
+        type: "website",
+        locale: "ja_JP",
+        url: "https://bmi.zucca100.com",
+        title: "BMI計算機 | 無料ボディマス指数計算",
+        description:
+          "無料オンラインBMI計算機であなたのボディマス指数を計算しましょう。身長と体重を入力すれば、すぐにBMI値と体型判定が確認できます。",
+        siteName: "BMI計算機",
+        images: [
+          {
+            url: "https://bmi.zucca100.com/android-chrome-512x512.png",
+            width: 1200,
+            height: 630,
+            alt: "BMI計算機ロゴ画像",
+          },
+        ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: "BMI計算機 | 無料ボディマス指数計算",
+        description:
+          "無料オンラインBMI計算機であなたのボディマス指数を計算しましょう。",
+        images: ["https://bmi.zucca100.com/android-chrome-512x512.png"],
+      },
+    };
+  }
+
+  // Fallback (shouldn't happen with our checks)
+  return {
+    title: "BMI Calculator",
     description:
-      "무료 온라인 BMI 계산기로 당신의 체질량지수를 계산해보세요. 키와 몸무게를 입력하면 바로 BMI 수치와 비만도를 확인할 수 있습니다.",
-    siteName: "BMI 계산기",
-    images: [
-      {
-        url: "https://bmi.zucca100.com/android-chrome-512x512.png",
-        width: 1200,
-        height: 630,
-        alt: "BMI 계산기 로고 이미지",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "BMI 계산기 | 무료 체질량지수 계산",
-    description: "무료 온라인 BMI 계산기로 당신의 체질량지수를 계산해보세요.",
-    images: ["https://bmi.zucca100.com/android-chrome-512x512.png"],
-  },
-};
+      "Calculate your Body Mass Index with our free online BMI calculator.",
+  };
+}
 
 export default async function LocaleLayout({
   children,
