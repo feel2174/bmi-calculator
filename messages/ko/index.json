@@ -1,0 +1,54 @@
+{
+  "title": "BMI 계산기 | 무료 체질량지수 계산",
+  "description": "무료 온라인 BMI 계산기로 당신의 체질량지수를 계산해보세요. 키와 몸무게를 입력하면 바로 BMI 수치와 비만도를 확인할 수 있습니다.",
+  "keywords": "BMI, 체질량지수, 비만도, 체중계산, 건강, 다이어트, 무료계산기",
+  "header": {
+    "pageTitle": "BMI 계산기"
+  },
+  "inputs": {
+    "height": "키 (cm)",
+    "heightPlaceholder": "cm 단위로 입력",
+    "weight": "몸무게 (kg)",
+    "weightPlaceholder": "kg 단위로 입력",
+    "ageGroup": "연령대 선택",
+    "child": "소아/청소년",
+    "adult": "성인",
+    "senior": "노인(65세 이상)"
+  },
+  "buttons": {
+    "calculate": "계산하기",
+    "reset": "초기화"
+  },
+  "results": {
+    "title": "결과",
+    "bmi": "BMI",
+    "status": "상태",
+    "childNote": "(소아/청소년 기준)",
+    "seniorNote": "(노인 기준)"
+  },
+  "bmiStatus": {
+    "underweight": "저체중",
+    "normal": "정상",
+    "overweight": "과체중",
+    "obese": "비만",
+    "severelyObese": "고도비만"
+  },
+  "infoSection": {
+    "title": "BMI란 무엇인가요?",
+    "description": "체질량지수(BMI)는 체중(kg)을 신장(m)의 제곱으로 나눈 값으로, 비만도를 나타내는 지표입니다. 대한비만학회 기준에 따라 아시아인은 BMI 23 이상부터 과체중으로 분류됩니다.",
+    "formula": "계산식: BMI = 체중(kg) / (신장(m) × 신장(m))"
+  },
+  "categories": {
+    "title": "BMI 범주 (성인 기준)",
+    "underweight": "저체중: 18.5 미만",
+    "normal": "정상: 18.5 - 22.9",
+    "overweight": "과체중: 23 - 24.9",
+    "obese": "비만: 25 - 29.9",
+    "severelyObese": "고도비만: 30 이상"
+  },
+  "language": {
+    "ko": "한국어",
+    "en": "English",
+    "ja": "日本語"
+  }
+}

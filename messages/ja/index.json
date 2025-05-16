@@ -1,0 +1,54 @@
+{
+  "title": "BMI計算機 | 無料ボディマス指数計算",
+  "description": "無料オンラインBMI計算機であなたのボディマス指数を計算しましょう。身長と体重を入力すれば、すぐにBMI値と体型判定が確認できます。",
+  "keywords": "BMI, ボディマス指数, 体型判定, 体重計算, 健康, ダイエット, 無料計算機",
+  "header": {
+    "pageTitle": "BMI計算機"
+  },
+  "inputs": {
+    "height": "身長 (cm)",
+    "heightPlaceholder": "cm単位で入力",
+    "weight": "体重 (kg)",
+    "weightPlaceholder": "kg単位で入力",
+    "ageGroup": "年齢層の選択",
+    "child": "子供/青少年",
+    "adult": "成人",
+    "senior": "高齢者(65歳以上)"
+  },
+  "buttons": {
+    "calculate": "計算する",
+    "reset": "リセット"
+  },
+  "results": {
+    "title": "結果",
+    "bmi": "BMI",
+    "status": "状態",
+    "childNote": "(子供/青少年基準)",
+    "seniorNote": "(高齢者基準)"
+  },
+  "bmiStatus": {
+    "underweight": "低体重",
+    "normal": "標準",
+    "overweight": "過体重",
+    "obese": "肥満",
+    "severelyObese": "高度肥満"
+  },
+  "infoSection": {
+    "title": "BMIとは何ですか？",
+    "description": "ボディマス指数（BMI）は、体重（kg）を身長（m）の二乗で割った値で、肥満度を示す指標です。アジア人の基準では、BMI 23以上が過体重と分類されます。",
+    "formula": "計算式: BMI = 体重(kg) / (身長(m) × 身長(m))"
+  },
+  "categories": {
+    "title": "BMIカテゴリー (成人基準)",
+    "underweight": "低体重: 18.5未満",
+    "normal": "標準: 18.5 - 22.9",
+    "overweight": "過体重: 23 - 24.9",
+    "obese": "肥満: 25 - 29.9",
+    "severelyObese": "高度肥満: 30以上"
+  },
+  "language": {
+    "ko": "한국어",
+    "en": "English",
+    "ja": "日本語"
+  }
+}

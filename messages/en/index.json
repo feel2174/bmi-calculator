@@ -1,0 +1,54 @@
+{
+  "title": "BMI Calculator | Free Body Mass Index Calculator",
+  "description": "Calculate your Body Mass Index with our free online BMI calculator. Enter your height and weight to instantly check your BMI and weight status.",
+  "keywords": "BMI, Body Mass Index, weight status, weight calculation, health, diet, free calculator",
+  "header": {
+    "pageTitle": "BMI Calculator"
+  },
+  "inputs": {
+    "height": "Height (cm)",
+    "heightPlaceholder": "Enter in cm",
+    "weight": "Weight (kg)",
+    "weightPlaceholder": "Enter in kg",
+    "ageGroup": "Select Age Group",
+    "child": "Child/Teen",
+    "adult": "Adult",
+    "senior": "Senior (65+)"
+  },
+  "buttons": {
+    "calculate": "Calculate",
+    "reset": "Reset"
+  },
+  "results": {
+    "title": "Results",
+    "bmi": "BMI",
+    "status": "Status",
+    "childNote": "(Child/Teen criteria)",
+    "seniorNote": "(Senior criteria)"
+  },
+  "bmiStatus": {
+    "underweight": "Underweight",
+    "normal": "Normal",
+    "overweight": "Overweight",
+    "obese": "Obese",
+    "severelyObese": "Severely Obese"
+  },
+  "infoSection": {
+    "title": "What is BMI?",
+    "description": "Body Mass Index (BMI) is a value derived from a person's weight (kg) divided by the square of height (m), indicating their level of body fat. According to Asian standards, a BMI of 23 or above is classified as overweight.",
+    "formula": "Formula: BMI = Weight(kg) / (Height(m) × Height(m))"
+  },
+  "categories": {
+    "title": "BMI Categories (Adult)",
+    "underweight": "Underweight: Below 18.5",
+    "normal": "Normal: 18.5 - 22.9",
+    "overweight": "Overweight: 23 - 24.9",
+    "obese": "Obese: 25 - 29.9",
+    "severelyObese": "Severely Obese: 30 and above"
+  },
+  "language": {
+    "ko": "한국어",
+    "en": "English",
+    "ja": "日本語"
+  }
+}
