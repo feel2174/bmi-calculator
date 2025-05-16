@@ -48,6 +48,14 @@ export default async function LocaleLayout({
           crossOrigin="anonymous"
           strategy="beforeInteractive"
         />
+        <meta
+          name="google-site-verification"
+          content="ylRZwQXQH9ZVegPDqDJGKHanYBIwb2fDMD_NWF917FI"
+        />
+        <meta
+          name="naver-site-verification"
+          content="6feae1f36f2e4766975481e81ca8009c89ba99e4"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
