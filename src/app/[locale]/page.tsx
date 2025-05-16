@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
 
@@ -80,25 +80,6 @@ export default function Home() {
     setStatus("");
     setAgeGroup("adult");
   };
-
-  // 광고 스크립트를 위한 useEffect
-  useEffect(() => {
-    // Google AdSense 스크립트 로드 (실제 사용 시 본인의 광고 ID로 변경 필요)
-    const script = document.createElement("script");
-    script.src =
-      "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9196149361612087";
-    script.async = true;
-    script.crossOrigin = "anonymous";
-    document.head.appendChild(script);
-
-    return () => {
-      try {
-        document.head.removeChild(script);
-      } catch {
-        // Script might not be in the document anymore
-      }
-    };
-  }, []);
 
   // 언어 전환 적용
   const changeLanguage = (newLocale: string) => {
@@ -271,6 +252,33 @@ export default function Home() {
             </div>
           )}
         </div>
+
+        {/* 광고 섹션 */}
+        {bmi !== null && (
+          <div className="mt-8 w-full max-w-md mx-auto">
+            <div className="bg-gray-200 p-4 rounded-md text-center">
+              <p className="text-sm text-gray-600 mb-2">
+                {safeT("advertisements", "광고")}
+              </p>
+              <div className="h-60 flex flex-col items-center justify-center border border-gray-300 bg-white p-3">
+                {/* AdSense 광고 코드 */}
+                <ins
+                  className="adsbygoogle"
+                  style={{ display: "block" }}
+                  data-ad-client="ca-pub-9196149361612087"
+                  data-ad-slot="your-ad-slot-id"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"
+                ></ins>
+                <script
+                  dangerouslySetInnerHTML={{
+                    __html: `(adsbygoogle = window.adsbygoogle || []).push({});`,
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* BMI 정보 섹션 */}
         <div className="mt-8 bg-white p-6 rounded-lg shadow-md w-full max-w-md mx-auto">

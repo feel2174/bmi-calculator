@@ -3,6 +3,7 @@ import "./globals.css";
 import { notFound } from "next/navigation";
 import { Providers } from "./providers";
 import React from "react";
+import Script from "next/script";
 
 // Define available locales
 const locales = ["ko", "en", "ja"];
@@ -41,6 +42,12 @@ export default async function LocaleLayout({
       <head>
         <link rel="icon" href="/images/favicon.svg" type="image/svg+xml" />
         <link rel="shortcut icon" href="/favicon.ico" />
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9196149361612087"
+          crossOrigin="anonymous"
+          strategy="beforeInteractive"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
