@@ -4,6 +4,15 @@ import { useState, useEffect } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
 
+// Fix TypeScript declarations
+declare global {
+  interface Window {
+    adsbygoogle: Array<{
+      [key: string]: unknown;
+    }>;
+  }
+}
+
 export default function Home() {
   // Get translations and locale
   const t = useTranslations();
@@ -16,6 +25,7 @@ export default function Home() {
   const [status, setStatus] = useState("");
   const [ageGroup, setAgeGroup] = useState("adult"); // adult, senior, child
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [adsLoaded, setAdsLoaded] = useState(false);
 
   // 다크모드 감지 및 설정
   useEffect(() => {
@@ -31,6 +41,18 @@ export default function Home() {
     mediaQuery.addEventListener("change", handleChange);
     return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
+
+  // AdSense 광고 로드
+  useEffect(() => {
+    if (bmi !== null && window.adsbygoogle && !adsLoaded) {
+      try {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+        setAdsLoaded(true);
+      } catch (error) {
+        console.error("AdSense error:", error);
+      }
+    }
+  }, [bmi, adsLoaded]);
 
   const safeT = (key: string, fallback: string): string => {
     try {
@@ -353,11 +375,7 @@ export default function Home() {
                   data-ad-format="auto"
                   data-full-width-responsive="true"
                 ></ins>
-                <script
-                  dangerouslySetInnerHTML={{
-                    __html: `(adsbygoogle = window.adsbygoogle || []).push({});`,
-                  }}
-                />
+                {/* AdSense 광고 스크립트는 useEffect에서 로드됨 */}
               </div>
             </div>
           </div>
