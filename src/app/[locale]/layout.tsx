@@ -53,14 +53,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "ko_KR",
-    url: "https://bmi-calculator-five-zeta.vercel.app",
+    url: "https://bmi.zucca100.com",
     title: "BMI 계산기 | 무료 체질량지수 계산",
     description:
       "무료 온라인 BMI 계산기로 당신의 체질량지수를 계산해보세요. 키와 몸무게를 입력하면 바로 BMI 수치와 비만도를 확인할 수 있습니다.",
     siteName: "BMI 계산기",
     images: [
       {
-        url: "https://bmi-calculator-five-zeta.vercel.app/images/og-image.svg",
+        url: "https://bmi.zucca100.com/android-chrome-512x512.png",
         width: 1200,
         height: 630,
         alt: "BMI 계산기 로고 이미지",
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "BMI 계산기 | 무료 체질량지수 계산",
     description: "무료 온라인 BMI 계산기로 당신의 체질량지수를 계산해보세요.",
-    images: ["https://bmi-calculator-five-zeta.vercel.app/images/og-image.svg"],
+    images: ["https://bmi.zucca100.com/android-chrome-512x512.png"],
   },
 };
 
