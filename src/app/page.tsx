@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function Home() {
   const [height, setHeight] = useState("");
@@ -69,21 +69,6 @@ export default function Home() {
     setShowAd(false);
     setAgeGroup("adult");
   };
-
-  // 광고 스크립트를 위한 useEffect
-  useEffect(() => {
-    // Google AdSense 스크립트 로드 (실제 사용 시 본인의 광고 ID로 변경 필요)
-    const script = document.createElement("script");
-    script.src =
-      "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9196149361612087";
-    script.async = true;
-    script.crossOrigin = "anonymous";
-    document.head.appendChild(script);
-
-    return () => {
-      document.head.removeChild(script);
-    };
-  }, []);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-6 md:p-24">

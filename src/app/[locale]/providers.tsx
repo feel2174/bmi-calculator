@@ -42,7 +42,13 @@ export function Providers({ locale, children }: ProvidersProps) {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-screen">
-        Loading...
+        <div className="relative">
+          <div className="h-16 w-16 rounded-full border-t-4 border-b-4 border-blue-500 animate-spin"></div>
+          <div className="absolute top-0 left-0 h-16 w-16 rounded-full border-t-4 border-b-4 border-blue-200 animate-pulse"></div>
+          <div className="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center">
+            <div className="h-8 w-8 bg-blue-500 rounded-full animate-ping opacity-75"></div>
+          </div>
+        </div>
       </div>
     );
   }
