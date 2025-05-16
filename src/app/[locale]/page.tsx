@@ -16,7 +16,6 @@ export default function Home() {
   const [status, setStatus] = useState("");
   const [ageGroup, setAgeGroup] = useState("adult"); // adult, senior, child
 
-  // 안전하게 메시지 접근을 위한 헬퍼 함수
   const safeT = (key: string, fallback: string): string => {
     try {
       return t(key);
