@@ -5,7 +5,7 @@ import { Providers } from "./providers";
 import React from "react";
 import Script from "next/script";
 import type { Metadata } from "next";
-
+import { Analytics } from "@vercel/analytics/next"
 // Define available locales
 const locales = ["ko", "en", "ja"];
 
@@ -185,6 +185,7 @@ export default async function LocaleLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Analytics/>
         <Providers locale={locale}>{children}</Providers>
       </body>
     </html>
