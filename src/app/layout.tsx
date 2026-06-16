@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
 import Script from "next/script";
+import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,35 +13,73 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const TABOOLA_LOADER_SCRIPT = `(function () {
+  var PUBLISHER_ID = 'zucca-network';
+  var PAGE_TYPE = 'article';
+
+  var LOADER_URL = '//cdn.taboola.com/libtrc/' + PUBLISHER_ID + '/loader.js';
+  var LOADER_PRIVACY_URL = '//static.btloader.com/libtrc/' + PUBLISHER_ID + '/loader.privacy.js';
+  var PIXEL_URL = 'https://static.cqvani.com/libtrc/t5?type=pixel&publisher=' + PUBLISHER_ID;
+  var SCRIPT_ID = 'tbl_loader_script';
+
+  window._taboola = window._taboola || [];
+
+  var pageTypePush = {};
+  pageTypePush[PAGE_TYPE] = 'auto';
+  _taboola.push(pageTypePush);
+
+  new Image().src = PIXEL_URL;
+
+  var firstScript = document.getElementsByTagName('script')[0];
+
+  function injectLoader(id, src, fallbackSrc) {
+    if (document.getElementById(id)) return;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = src;
+    s.id = id;
+    if (fallbackSrc) {
+      s.onerror = function () {
+        if (s.parentNode) s.parentNode.removeChild(s);
+        injectLoader(SCRIPT_ID + '_fb', fallbackSrc, null);
+      };
+    }
+    firstScript.parentNode.insertBefore(s, firstScript);
+  }
+
+  injectLoader(SCRIPT_ID, LOADER_URL, LOADER_PRIVACY_URL);
+
+  if (window.performance && typeof window.performance.mark === 'function') {
+    window.performance.mark('tbl_ic');
+  }
+})();`;
+
 export const metadata: Metadata = {
-  title: "BMI 계산기 | 무료 체질량지수 계산",
-  description:
-    "무료 온라인 BMI 계산기로 당신의 체질량지수를 계산해보세요. 키와 몸무게를 입력하면 바로 BMI 수치와 비만도를 확인할 수 있습니다.",
-  keywords: "BMI, 체질량지수, 비만도, 체중계산, 건강, 다이어트, 무료계산기",
+  title: "BMI Calculator",
+  description: "Free BMI calculator with multilingual support.",
+  keywords: ["BMI", "BMI Calculator", "Body Mass Index", "Health"],
   icons: {
     icon: [{ url: "/favicon.ico" }],
   },
   openGraph: {
     type: "website",
-    locale: "ko_KR",
     url: "https://bmi.zucca100.com",
-    title: "BMI 계산기 | 무료 체질량지수 계산",
-    description:
-      "무료 온라인 BMI 계산기로 당신의 체질량지수를 계산해보세요. 키와 몸무게를 입력하면 바로 BMI 수치와 비만도를 확인할 수 있습니다.",
-    siteName: "BMI 계산기",
+    title: "BMI Calculator",
+    description: "Free BMI calculator with multilingual support.",
+    siteName: "BMI Calculator",
     images: [
       {
         url: "https://bmi.zucca100.com/android-chrome-512x512.png",
         width: 1200,
         height: 630,
-        alt: "BMI 계산기 로고 이미지",
+        alt: "BMI Calculator",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "BMI 계산기 | 무료 체질량지수 계산",
-    description: "무료 온라인 BMI 계산기로 당신의 체질량지수를 계산해보세요.",
+    title: "BMI Calculator",
+    description: "Free BMI calculator with multilingual support.",
     images: ["https://bmi.zucca100.com/android-chrome-512x512.png"],
   },
 };
@@ -70,11 +108,24 @@ export default function RootLayout({
           data-overlays="bottom"
           strategy="beforeInteractive"
         />
+        <Script
+          id="taboola-loader"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: TABOOLA_LOADER_SCRIPT }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <Script
+          id="taboola-flush"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html:
+              "window._taboola = window._taboola || []; _taboola.push({flush: true});",
+          }}
+        />
       </body>
     </html>
   );
