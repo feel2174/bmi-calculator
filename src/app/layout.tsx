@@ -18,7 +18,7 @@ const TABOOLA_LOADER_SCRIPT = `(function () {
   var PAGE_TYPE = 'article';
 
   var LOADER_URL = '//cdn.taboola.com/libtrc/' + PUBLISHER_ID + '/loader.js';
-  var LOADER_PRIVACY_URL = '//static.btloader.com/libtrc/' + PUBLISHER_ID + '/loader.privacy.js';
+  var LOADER_PRIVACY_URL = '//static.tblcontent.com/libtrc/' + PUBLISHER_ID + '/loader.privacy.js';
   var PIXEL_URL = 'https://static.cqvani.com/libtrc/t5?type=pixel&publisher=' + PUBLISHER_ID;
   var SCRIPT_ID = 'tbl_loader_script';
 
